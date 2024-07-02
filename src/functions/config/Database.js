@@ -1,18 +1,21 @@
-// const { Pool } = require("pg");
+import pg from "pg";
 
-const Database = (dataDB) => {
+const Database = async(dataDB) => {
+  
+    const pool = new pg.Pool({
+      user: dataDB.user,
+      host: dataDB.host,
+      database: dataDB.database,
+      password: dataDB.password,
+      port: dataDB.port
+    });
+    // console.log(pool)
+    return pool
 
-  console.log(dataDB)
-
-  const pool = new Pool({
-    user: dataDB.user,
-    host: dataDB.host,
-    database: dataDB.database,
-    password: dataDB.password,
-    port: dataDB.port,
-  });
-
-  // return pool
 };
 
+
 export default Database;
+
+
+
